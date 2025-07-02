@@ -151,7 +151,7 @@ export function PlatformProvider({ children }: { children: ReactNode }) {
         } else {
           finalPlatforms.push({
             id: type,
-            name: type && type.length > 0 ? (type.charAt(0).toUpperCase() + type.slice(1)) : "Unknown",
+            name: (() => { const safeType = safeString(type); return safeType.length > 0 ? (safeType.charAt(0).toUpperCase() + safeType.slice(1)) : "Unknown"; })(),
             type: type,
             status: 'disconnected',
             followers: 0,

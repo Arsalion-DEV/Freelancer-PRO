@@ -20,7 +20,7 @@ export const Dashboard: React.FC = () => {
   const { platforms, jobs } = usePlatforms();
   const { user } = useAuth();
 
-  const connectedPlatforms = platforms.filter(p => p.connected);
+  const connectedPlatforms = platforms.filter(p => p.status === "connected");
   const newJobs = jobs.filter(job => job.status === 'new');
   const respondedJobs = jobs.filter(job => job.status === 'responded');
   const todayJobs = jobs.filter(job => {

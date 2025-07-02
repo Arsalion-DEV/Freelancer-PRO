@@ -319,7 +319,7 @@ export const ComplianceCenter: React.FC = () => {
                           {violation.severity}
                         </Badge>
                         <div>
-                          <p className="font-semibold">{violation.type.replace('-', ' ').toUpperCase()}</p>
+                          <p className="font-semibold">{(violation.type ? violation.type.replace("-", " ").toUpperCase() : "VIOLATION")}</p>
                           <p className="text-sm text-muted-foreground">{violation.description}</p>
                         </div>
                       </div>

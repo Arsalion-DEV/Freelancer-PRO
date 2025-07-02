@@ -141,7 +141,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                   <Avatar className="h-8 w-8">
                     <AvatarImage src={user?.avatar} alt={user?.name || 'User'} />
                     <AvatarFallback>
-                      {user?.name ? user.name.split(' ').map(n => n[0] || '').join('') : 'U'}
+                      {user?.name ? user.name.split(' ').map(n => (n {user?.name ? user.name.split(' ').map(n => n[0] || '').join('') : 'U'}{user?.name ? user.name.split(' ').map(n => n[0] || '').join('') : 'U'} n.length > 0 ? n[0] : '')).join('') : 'U'}
                     </AvatarFallback>
                   </Avatar>
                 </Button>

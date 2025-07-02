@@ -5,7 +5,6 @@ import { Layout } from '@/components/layout/Layout';
 import { Dashboard } from '@/pages/Dashboard';
 import PlatformConnections from '@/pages/PlatformConnections';
 import { AuthProvider } from '@/contexts/AuthContext';
-import { PlatformProvider } from '@/contexts/PlatformContext';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(() => {
@@ -47,23 +46,28 @@ export default function App() {
   const renderPage = () => {
     console.log('Current path:', currentPath);
     
-    if (currentPath === '/platforms') {
-      return <PlatformConnections />;
+    try {
+      if (currentPath === '/platforms') {
+        console.log('Rendering PlatformConnections');
+        return <PlatformConnections />;
+      }
+      console.log('Rendering Dashboard');
+      return <Dashboard />;
+    } catch (error) {
+      console.error('Error rendering page:', error);
+      return <div>Error loading page</div>;
     }
-    return <Dashboard />;
   };
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="social-monitor-theme">
       <AuthProvider>
-        <PlatformProvider>
-          <div className="min-h-screen bg-background">
-            <Layout>
-              {renderPage()}
-            </Layout>
-            <Toaster />
-          </div>
-        </PlatformProvider>
+        <div className="min-h-screen bg-background">
+          <Layout>
+            {renderPage()}
+          </Layout>
+          <Toaster />
+        </div>
       </AuthProvider>
     </ThemeProvider>
   );

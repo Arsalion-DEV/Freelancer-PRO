@@ -159,7 +159,7 @@ export const Analytics: React.FC = () => {
                   <div key={keyword.keyword} className="flex items-center justify-between p-4 border rounded-lg">
                     <div className="flex items-center space-x-4">
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <span className="font-bold text-blue-600 text-sm">{keyword.keyword.slice(0, 2).toUpperCase()}</span>
+                        <span className="font-bold text-blue-600 text-sm">{(keyword.keyword keyword.keyword.slice(0, 2).toUpperCase()keyword.keyword.slice(0, 2).toUpperCase() keyword.keyword.length >= 2 ? keyword.keyword.slice(0, 2).toUpperCase() : "KW")}</span>
                       </div>
                       <div>
                         <h3 className="font-medium">{keyword.keyword}</h3>
