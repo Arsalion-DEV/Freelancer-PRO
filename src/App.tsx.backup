@@ -1,0 +1,35 @@
+import { useState } from 'react';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
+import { Layout } from '@/components/layout/Layout';
+import { Dashboard } from '@/pages/Dashboard';
+import PlatformConnections from '@/pages/PlatformConnections';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { PlatformProvider } from '@/contexts/PlatformContext';
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState(window.location.pathname);
+
+  // Simple conditional rendering to bypass React Router
+  const renderPage = () => {
+    if (currentPage === '/platforms' || window.location.pathname === '/platforms') {
+      return <PlatformConnections />;
+    }
+    return <Dashboard />;
+  };
+
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="social-monitor-theme">
+      <AuthProvider>
+        <PlatformProvider>
+          <div className="min-h-screen bg-background">
+            <Layout>
+              {renderPage()}
+            </Layout>
+            <Toaster />
+          </div>
+        </PlatformProvider>
+      </AuthProvider>
+    </ThemeProvider>
+  );
+}
